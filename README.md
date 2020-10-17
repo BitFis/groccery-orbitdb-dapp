@@ -3,7 +3,7 @@
 This grocery list is using OrbitDB to synchronize the grocery list entries
 between the peers. Generally there are clients and servers, which both are
 always also peers. The difference between a client and a servers is its expected
-availability. 
+availability.
 
 The idea is to have a seamless and stable list synchronization between multiple
 clients but enable the app user to keep control over the data. The easies way to
@@ -41,3 +41,16 @@ Technical features:
 - Different "base" Datastore endpoints [WIP]:
   - Django DB endpoint [WIP]
   - GTable [WIP]
+
+## Future Possible Issues [WIP]
+
+OrbitDB uses IPFS as backend. IPFS is a immutable system, which keeps all the
+data in a git like manner. This has following implications:
+
+- **Data-Growth of useless data**, most likely the owner of the grocery lists
+  do not care about lists created a year or more ago. This data can be delete
+  savely and should not bloat the used storage.
+- **Data privacy / the EU's General Data Protection Regulation (GDPR)**, ensure all data is
+  fully anonymous and do not allow to identify users in any way.
+- **Small updates bloating IPFS**, tiny updates, like check a bought grocery
+  item from list, should not bloat IPFS.
